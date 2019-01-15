@@ -18,12 +18,18 @@ namespace WebApplication1
             try
             {
                 GridViewSearch.DataSource = user.searchUser(search);
+                GridViewSearch.DataBind();
             }
             catch(SqlException)
             {
-
+                
             }
-            
+        }
+        
+        protected void GridViewSearch_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            string edit = GridViewSearch.Rows[e.NewSelectedIndex].Cells[1].Text;
+            Response.Redirect("UPU.aspx?search=" + edit);
         }
     }
 }

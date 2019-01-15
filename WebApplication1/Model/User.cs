@@ -25,7 +25,7 @@ namespace WebApplication1.Model
             string query = string.Format("INSERT INTO [NewDB].[dbo].[userT] (NIC, fName, lName, addr, tele, gender, DOB, email) values ( '" + NIC + "', '" + fName + "', '" + lName + "', '" + addr + "', '" + contactNo + "', " + gender + ", '" + dob.ToString("yyyy-MM-dd") + "', '" + email + "') ");
             try
             {
-                db.iud(query);
+                stat = db.iud(query);
             }
             catch(SqlException ex)
             {
@@ -48,7 +48,16 @@ namespace WebApplication1.Model
         {
             int stat = 0;
 
+            var db = new Database();
+            string query = "update [NewDB].[dbo].[userT] set NIC = '" + NIC + "', fName = '" + fName + "', lName = '" + lName + "', addr = '" + addr + "', tele = '" + contactNo + "', gender = " + gender + ", DOB = '" + dob.ToString("yyyy - MM - dd") + "', email = '" + email + "' where NIC = '" + NIC + "'";
+            try
+            {
+                stat = db.iud(query);
+            }
+            catch (SqlException ex)
+            {
 
+            }
 
             return stat;
         }
@@ -58,7 +67,7 @@ namespace WebApplication1.Model
             DataTable dt = null;
 
             var db = new Database();
-            string query = string.Format("SELECT * from [NewDB].[dbo].[userT] where NIC = '" + search + "' or Tele = '" + search + "' or fName = '" + search + "' or lName = '" + search + "'");
+            string query = string.Format("SELECT * from [NewDB].[dbo].[userT] where NIC = '" + search + "'");
             try
             {
                 dt = db.selectDT(query);
@@ -69,6 +78,24 @@ namespace WebApplication1.Model
             }
 
             return dt;
+        }
+
+        public SqlDataReader searchUserDR(string search)
+        {
+            SqlDataReader dr = null;
+
+            var db = new Database();
+            string query = string.Format("SELECT * from [NewDB].[dbo].[userT] where NIC = '" + search + "'");
+            try
+            {
+                dr = db.selectDR(query);
+            }
+            catch (SqlException ex)
+            {
+
+            }
+
+            return dr;
         }
     }
 }

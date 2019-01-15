@@ -117,6 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UPU.aspx" />
     <Content Include="ANU.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -215,6 +216,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UPU.aspx.cs">
+      <DependentUpon>UPU.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UPU.aspx.designer.cs">
+      <DependentUpon>UPU.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ANU.aspx.cs">
       <DependentUpon>ANU.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

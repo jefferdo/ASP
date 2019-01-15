@@ -13,24 +13,7 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string search = Request.QueryString["search"];
-            if(search != null)
-                {
-                try
-                {
-                    Database db = new Database();
-                    SqlDataReader dr = db.selectDR(search);
-                    while (dr.NextResult())
-                    {
-
-                    }
-                }
-                catch (SqlException ex)
-                {
-
-                }
-            }
-            
+                        
         }
 
         protected void btnANU_Click(object sender, EventArgs e)
@@ -41,7 +24,7 @@ namespace WebApplication1
             user.lName = txtlName.Text;
             user.addr = txtAddr.Text;
             user.contactNo = txtTel.Text;
-            user.gender = (rdpGender.SelectedValue == "Male") ? 1 : 0;
+            user.gender = (rdpGender.SelectedValue == "Female") ? 1 : 0;
             user.dob = Calendar1.SelectedDate;
             user.email = txtEmail.Text;
             user.NIC = txtNIC.Text;

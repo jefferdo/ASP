@@ -19,6 +19,12 @@ namespace WebApplication1
             con = new SqlConnection(conString);
         }
 
+        public void conClose()
+        {
+            if (con.State == ConnectionState.Open)
+                con.Close();
+        }
+
         public int iud(string query)
         {
             int rows = 0;
@@ -72,12 +78,9 @@ namespace WebApplication1
                     con.Open();
                 cmd = new SqlCommand(query, con);
                 dr = cmd.ExecuteReader();
-                if (con.State == ConnectionState.Open)
-                    con.Close();
             }
             catch (SqlException ex)
             {
-                con.Close();
                 throw;
             }
 
